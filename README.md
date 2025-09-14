@@ -49,7 +49,7 @@
 4. Customize your question and save
 
 ### Alternative Method (Desktop Only):
-- Press `Ctrl + Alt + Q` and enter password `hackAdmin123`
+- Press `Ctrl + Alt + Q` and enter password `hackAdm8`
 
 ### Admin Panel Features:
 - ✏️ Edit the troll question
