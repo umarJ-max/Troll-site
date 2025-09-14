@@ -92,12 +92,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: var(--card-bg);
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
             border-radius: var(--border-radius);
             padding: 30px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             min-width: 400px;
+            max-width: 90vw;
+            max-height: 90vh;
         }
 
         h1 {
@@ -224,7 +226,7 @@
         }
 
         .admin-panel h3 {
-            color: var(--text-dark);
+            color: white;
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
@@ -232,9 +234,9 @@
         .admin-panel textarea {
             width: 100%;
             padding: 15px;
-            border: 2px solid #bdc3c7;
+            border: 2px solid #ffffff;
             border-radius: var(--border-radius);
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9);
             color: var(--text-dark);
             margin-bottom: 20px;
             resize: vertical;
@@ -315,7 +317,9 @@
 
             .admin-panel {
                 min-width: 90vw;
-                margin: 20px;
+                max-width: 90vw;
+                margin: 5vw;
+                padding: 20px;
             }
         }
 
