@@ -378,7 +378,7 @@
         // Configuration
         const CONFIG = {
             secretKey: 'hackAdm8',
-            defaultQuestion: 'Hey {name}, you really are a hacker?',
+            defaultQuestion: 'you really are a hacker?',
             storageKey: 'customQuestion'
         };
 
@@ -469,8 +469,8 @@
             elements.welcomeScreen.style.display = 'none';
             elements.mainContent.style.display = 'block';
             
-            // Set question with user's name
-            elements.questionText.textContent = gameState.currentQuestion.replace('{name}', name);
+            // Set question with user's name (Hey {name} is always added)
+            elements.questionText.textContent = `Hey ${name}, ${gameState.currentQuestion}`;
             
             // Reset game state
             resetGameButtons();
@@ -587,7 +587,7 @@
             
             // Always update the question display if we have a username
             if (gameState.userName) {
-                elements.questionText.textContent = newQuestion.replace('{name}', gameState.userName);
+                elements.questionText.textContent = `Hey ${gameState.userName}, ${newQuestion}`;
             }
 
             showMessage('adminSuccess', 'Question updated successfully!');
