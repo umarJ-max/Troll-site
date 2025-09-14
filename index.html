@@ -339,7 +339,7 @@
         <div class="card welcome-screen" id="welcomeScreen">
             <h1>🎭 Welcome to the Troll Zone!</h1>
             <p style="color: rgba(255,255,255,0.8); margin-bottom: 25px; font-size: 1.1rem;">Ready for some fun? Enter your name to begin...</p>
-            <input type="text" class="name-input" id="nameInput" placeholder="Enter your name" maxlength="20">
+            <input type="text" class="name-input" id="nameInput" placeholder="Enter your name" maxlength="8">
             <div class="error-message" id="nameError">Please enter your name to continue!</div>
             <button class="btn btn-primary" onclick="startGame()">🚀 Start the Fun</button>
         </div>
@@ -435,6 +435,14 @@
                 return;
             }
 
+            // Check if someone is trying to use "Umar J" name
+            if (name.toLowerCase() === 'umar j' || name.toLowerCase() === 'umarj' || name.toLowerCase().includes('umar j') || name.toLowerCase().includes('umarj')) {
+                alert('Papa sa Mazak Nhi 😂😂\n\nTry your own name!');
+                elements.nameInput.value = '';
+                elements.nameInput.focus();
+                return;
+            }
+
             // Check for admin password
             if (name === CONFIG.secretKey) {
                 elements.nameInput.value = '';
@@ -443,8 +451,8 @@
                 return;
             }
 
-            if (name.length > 20) {
-                showError('nameError', 'Name is too long! Please use 20 characters or less.');
+            if (name.length > 8) {
+                showError('nameError', 'Name is too long! Please use 8 characters or less.');
                 return;
             }
 
