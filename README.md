@@ -1,4 +1,4 @@
-# 🎭 Troll Hacker Site
+# 🎭 Troll Site
 
 > A fun interactive website that trolls users with a moving "Yes" button and personalized messages. Perfect for pranking friends!
 
