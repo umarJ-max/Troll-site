@@ -43,7 +43,7 @@
 ## 🔧 Admin Panel Access
 
 ### Mobile & Desktop Compatible Method:
-1. On the welcome screen, enter `hackAdmin123` in the name field
+1. On the welcome screen, enter `hackAdm8` in the name field
 2. Click "Start the Fun" button
 3. Admin panel will open automatically
 4. Customize your question and save
