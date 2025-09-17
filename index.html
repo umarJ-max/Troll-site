@@ -63,7 +63,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             z-index: 10;
         }
 
@@ -76,6 +76,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
         }
 
         .welcome-screen {
@@ -116,6 +117,27 @@
             margin-bottom: 30px;
             line-height: 1.6;
         }
+        
+        .game-question {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #2c3e50;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 600px;
+            animation: questionPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes questionPulse {
+            0% { transform: scale(1); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); }
+            100% { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+        }
 
         .name-input {
             width: 100%;
@@ -149,32 +171,42 @@
         }
 
         .game-btn {
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
             border: none;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             cursor: pointer;
-            min-width: 80px;
+            min-width: 120px;
             position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .game-btn-success {
-            background: var(--success-color);
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
             color: var(--text-light);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .game-btn-success:hover {
-            background: #229954;
+            background: linear-gradient(135deg, #4a9428 0%, #95d3b8 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
         .game-btn-danger {
-            background: var(--danger-color);
+            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
             color: var(--text-light);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .game-btn-danger:hover {
-            background: #c0392b;
+            background: linear-gradient(135deg, #e63946 0%, #e63946 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
         .btn-primary {
@@ -207,7 +239,7 @@
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
@@ -310,9 +342,19 @@
             }
 
             .game-btn {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-                min-width: 60px;
+                padding: 12px 25px;
+                font-size: 1rem;
+                min-width: 100px;
+            }
+            
+            .game-question {
+                font-size: 1.4rem;
+                padding: 20px 25px;
+                margin-bottom: 40px;
+            }
+            
+            .buttons {
+                gap: 25px;
             }
 
             .admin-panel {
@@ -352,7 +394,7 @@
 
         <div class="main-content" id="mainContent">
             <div class="game-area">
-                <div class="question" id="questionText" style="color: var(--text-light); margin-bottom: 40px;"></div>
+                <div class="game-question" id="questionText"></div>
                 <div class="buttons">
                     <button class="game-btn game-btn-success" id="yesButton">✅ Yes</button>
                     <button class="game-btn game-btn-danger" id="noButton">❌ No</button>
@@ -467,8 +509,8 @@
                 return;
             }
 
-            // Check if someone is trying to use "Umar" or "Umar J" name
-            if (name.toLowerCase().includes('umar')) {
+            // Check if someone is trying to use "Umar" or "Mateen" name
+            if (name.toLowerCase().includes('umar') || name.toLowerCase().includes('mateen')) {
                 alert('Papa sa Mazak Nhi 😂😂\n\nTry your own name!');
                 elements.nameInput.value = '';
                 elements.nameInput.focus();
