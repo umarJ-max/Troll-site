@@ -675,6 +675,15 @@
       </label>
     </div>
 
+    <label class="admin-label">Reveal Message 💬</label>
+    <input
+      class="admin-textarea"
+      id="adminResult"
+      type="text"
+      placeholder="e.g. Yeah, I knew it! 😂"
+      style="resize:none; min-height:unset; padding:14px; font-family:'Space Mono',monospace; font-size:.88rem;"
+    >
+
     <div class="admin-success" id="adminSuccess">✓ Settings saved successfully!</div>
 
     <div class="admin-actions">
@@ -698,7 +707,9 @@
     secretKey: 'hackAdm8',
     storageKey: 'troll_question',
     jumpKey: 'troll_jumper',
+    resultKey: 'troll_result',
     defaultQuestion: 'you really are a hacker?',
+    defaultResult: 'Yeah, I knew it! 😂',
   };
 
   /* ─── STATE ─── */
@@ -706,6 +717,7 @@
     name: '',
     question: localStorage.getItem(CFG.storageKey) || CFG.defaultQuestion,
     jumper: localStorage.getItem(CFG.jumpKey) || 'yes',
+    result: localStorage.getItem(CFG.resultKey) || CFG.defaultResult,
     active: false,
     adminJumperSelected: 'yes',
   };
@@ -828,6 +840,7 @@
     state.active = false;
     $('gameBtns').style.display = 'none';
     $('questionCard').style.display = 'none';
+    $('resultText').textContent = state.result;
     const rc = $('resultCard');
     rc.style.display = 'flex';
     fireConfetti();
@@ -861,7 +874,7 @@
   /* ─── ADMIN ─── */
   function openAdmin() {
     $('adminQuestion').value = state.question;
-    // sync UI
+    $('adminResult').value = state.result;
     state.adminJumperSelected = state.jumper;
     syncRadio();
     $('adminSuccess').classList.remove('show');
@@ -889,12 +902,15 @@
 
   function saveAdmin() {
     const q = $('adminQuestion').value.trim();
+    const r = $('adminResult').value.trim();
     if (!q) { showToast('❌ Please enter a question!'); return; }
     state.question = q;
     state.jumper   = state.adminJumperSelected;
+    state.result   = r || CFG.defaultResult;
     localStorage.setItem(CFG.storageKey, q);
     localStorage.setItem(CFG.jumpKey, state.jumper);
-    // refresh if game running
+    localStorage.setItem(CFG.resultKey, state.result);
+    $('resultText').textContent = state.result;
     if (state.name) renderQuestion();
     setupBtnEvents();
     $('adminSuccess').classList.add('show');
