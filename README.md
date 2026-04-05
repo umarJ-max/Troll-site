@@ -45,4 +45,4 @@ Hosted on Vercel via GitHub. Any push to the main branch auto-deploys.
 
 ---
 
-**Developed by [Umar J](https://github.com/umarj-max)**
+**Developed by [umarJ-max](https://github.com/umarj-max)**
